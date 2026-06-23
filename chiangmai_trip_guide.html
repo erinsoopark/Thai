@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>치앙마이 3박 4일 — 7/6~7/9</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --text: #2C2C2C;
+    --text-sub: #6B6B6B;
+    --text-light: #999;
+    --accent: #3D7C6B;
+    --accent-light: #E8F0ED;
+    --warm: #C4956A;
+    --warm-light: #F5EDE4;
+    --border: #E5E2DC;
+    --tag-bg: #EDEBE6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 48px;
+    text-align: center;
+  }
+
+  .hero-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .hero-date {
+    font-size: 16px;
+    color: var(--text-sub);
+    font-weight: 400;
+  }
+
+  .hero-line {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 32px auto 0;
+  }
+
+  /* Section */
+  section {
+    margin-bottom: 56px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-icon.flight { background: #E8EDF5; }
+  .section-icon.hotel { background: var(--accent-light); }
+  .section-icon.schedule { background: var(--warm-light); }
+  .section-icon.money { background: #F0E8F5; }
+  .section-icon.check { background: #E5F0E8; }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .card-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .card h3 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+
+  .card p + p { margin-top: 8px; }
+
+  /* Hotel cards */
+  .hotel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hotel-card.pick {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .pick-badge {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .hotel-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .hotel-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .hotel-tag {
+    font-size: 12px;
+    color: var(--text-sub);
+    background: var(--tag-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .hotel-desc {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+
+  .hotel-price {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .hotel-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+  .hotel-link:hover { opacity: 0.7; }
+
+  /* Day timeline */
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .day-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .day-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  .day-date {
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+
+  .day-theme {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .day-body {
+    padding: 20px 24px;
+  }
+
+  .time-block {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .time-block:last-child { margin-bottom: 0; }
+
+  .time-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--warm);
+    min-width: 36px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .time-content {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+
+  .time-content strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Cost table */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .cost-table tr { border-bottom: 1px solid var(--border); }
+  .cost-table tr:last-child { border-bottom: none; }
+
+  .cost-table td {
+    padding: 12px 0;
+    font-size: 14px;
+    color: var(--text-sub);
+  }
+
+  .cost-table td:last-child {
+    text-align: right;
+    font-weight: 500;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .cost-total td {
+    font-weight: 700 !important;
+    color: var(--text) !important;
+    font-size: 15px;
+    padding-top: 16px;
+    border-top: 2px solid var(--text);
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+  }
+
+  .checklist li {
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--text-sub);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 0 64px;
+    font-size: 13px;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+  }
+
+  .footer em { font-style: normal; color: var(--accent); }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 28px; }
+    .container { padding: 0 16px; }
+    .card, .hotel-card, .day-body { padding: 16px; }
+    .hotel-meta { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Refresh Trip</div>
+    <h1>치앙마이 3박 4일</h1>
+    <div class="hero-date">2026. 7. 6 (월) — 7. 9 (목)</div>
+    <div class="hero-line"></div>
+  </div>
+
+  <!-- FLIGHT -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon flight">✈</div>
+      <div class="section-title">항공권</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">노선</div>
+      <h3>인천 (ICN) → 치앙마이 (CNX) 직항</h3>
+      <p>비행시간 약 5시간 40분. 직항 운항사: 대한항공, 제주항공, 진에어, 에어부산, 이스타항공, 티웨이항공</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">예상 가격</div>
+      <h3>왕복 40~55만 원 (LCC 직항 기준)</h3>
+      <p>7월은 우기 비수기라 항공권이 연중 가장 저렴한 시기. 대한항공은 왕복 약 100만 원대로 비싼 편.</p>
+      <p>에어텔 패키지보다 항공 따로 + 숙소 따로가 이 시기엔 더 쌈.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">예약 방법</div>
+      <h3>스카이스캐너 or 카약에서 비교 검색</h3>
+      <p>① <a href="https://www.skyscanner.co.kr" target="_blank" style="color:var(--accent)">skyscanner.co.kr</a> 또는 <a href="https://www.kayak.co.kr" target="_blank" style="color:var(--accent)">kayak.co.kr</a> 접속</p>
+      <p>② 인천 → 치앙마이, 7/6 출발 7/9 귀국, 직항만 필터</p>
+      <p>③ 제주항공·진에어·에어부산 중 최저가로 결제</p>
+      <p>④ 좌석은 창가 추천 (혼자 여행이니까 옆자리 신경 덜 씀)</p>
+    </div>
+  </section>
+
+  <!-- HOTEL -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon hotel">🏠</div>
+      <div class="section-title">숙소 추천</div>
+    </div>
+
+    <p style="font-size:14px; color:var(--text-sub); margin-bottom:20px;">
+      전부 올드시티 안 또는 바로 근처. 개인 룸, 수영장 있음, 조식 포함, 혼자 여행객 리뷰 좋은 곳만 골랐어.
+      <strong style="color:var(--text)">아고다(Agoda)</strong>가 태국 숙소는 보통 가장 쌈. Booking.com과 비교 후 결제.
+    </p>
+
+    <!-- Pick 1 -->
+    <div class="hotel-card pick">
+      <div class="pick-badge">추천 1순위</div>
+      <div class="hotel-name">Aksara Heritage</div>
+      <div class="hotel-meta">
+        <span class="hotel-tag">⭐ 4.7 (545)</span>
+        <span class="hotel-tag">올드시티 중심</span>
+        <span class="hotel-tag">수영장</span>
+        <span class="hotel-tag">조식 포함</span>
+      </div>
+      <div class="hotel-desc">
+        란나 스타일 부티크 호텔. 올드시티 한복판인데 골목 안이라 조용함.
+        수영장 작지만 예쁘고, 조식 맛있음. 혼자 조용히 쉬기 딱 좋은 규모(약 30실).
+        리뷰에 "조용하고 평화로운 오아시스" 반복. 직원 응대도 매우 좋음.
+      </div>
+      <div class="hotel-price">1박 약 8~12만 원 (시즌별 변동)</div>
+      <a class="hotel-link" href="https://www.agoda.com/ko-kr/aksara-heritage/hotel/chiang-mai-th.html" target="_blank">아고다에서 보기 →</a>
+    </div>
+
+    <!-- Pick 2 -->
+    <div class="hotel-card">
+      <div class="hotel-name">Chala Number 6</div>
+      <div class="hotel-meta">
+        <span class="hotel-tag">⭐ 4.6 (876)</span>
+        <span class="hotel-tag">올드시티</span>
+        <span class="hotel-tag">수영장</span>
+        <span class="hotel-tag">조식 포함</span>
+      </div>
+      <div class="hotel-desc">
+        프라뽁끌라오 로드에 위치. 왓체디루앙 바로 옆이라 아침 산책 최적.
+        정원과 수영장이 "숨겨진 오아시스" 느낌. 무료 음료·스낵 제공.
+        깔끔한 모던 인테리어. 방이 넓고 침대가 좋다는 리뷰 많음.
+      </div>
+      <div class="hotel-price">1박 약 8~15만 원</div>
+      <a class="hotel-link" href="https://www.agoda.com/ko-kr/chala-number-6/hotel/chiang-mai-th.html" target="_blank">아고다에서 보기 →</a>
+    </div>
+
+    <!-- Pick 3 -->
+    <div class="hotel-card">
+      <div class="hotel-name">The Inside House</div>
+      <div class="hotel-meta">
+        <span class="hotel-tag">⭐ 4.8 (684)</span>
+        <span class="hotel-tag">올드시티</span>
+        <span class="hotel-tag">수영장</span>
+        <span class="hotel-tag">미니바 무료</span>
+      </div>
+      <div class="hotel-desc">
+        이 리스트에서 가장 특별한 곳. 콜로니얼 스타일 건물 가운데 큰 나무, 분수, 정원.
+        "마법 같은 안식처"라는 리뷰가 압도적. 미니바 전부 무료, 애프터눈 티 제공.
+        혼자 온 게스트도 잘 케어해준다는 리뷰. 좀 더 쓰고 싶으면 여기.
+      </div>
+      <div class="hotel-price">1박 약 15~25만 원</div>
+      <a class="hotel-link" href="https://www.agoda.com/ko-kr/the-inside-house/hotel/chiang-mai-th.html" target="_blank">아고다에서 보기 →</a>
+    </div>
+
+    <!-- Pick 4 -->
+    <div class="hotel-card">
+      <div class="hotel-name">Arun Dara Villa</div>
+      <div class="hotel-meta">
+        <span class="hotel-tag">⭐ 4.7 (148)</span>
+        <span class="hotel-tag">올드시티 북쪽</span>
+        <span class="hotel-tag">프라이빗 풀</span>
+        <span class="hotel-tag">조식 포함</span>
+      </div>
+      <div class="hotel-desc">
+        방마다 개인 수영장(!) 딸려 있음. 플로팅 브렉퍼스트 (300바트 추가) 가능.
+        천장 높고 방이 넓어서 혼자 쓰기 아까울 정도. 세탁 서비스 저렴.
+        "혼자 갔는데 제일 좋았던 숙소"라는 리뷰. 완전한 프라이버시.
+      </div>
+      <div class="hotel-price">1박 약 10~18만 원</div>
+      <a class="hotel-link" href="https://www.agoda.com/ko-kr/arun-dara-villa/hotel/chiang-mai-th.html" target="_blank">아고다에서 보기 →</a>
+    </div>
+
+    <!-- Budget option -->
+    <div class="hotel-card">
+      <div class="hotel-name">De Chai The Deco Hotel</div>
+      <div class="hotel-meta">
+        <span class="hotel-tag">⭐ 4.3 (502)</span>
+        <span class="hotel-tag">타패게이트 도보 3분</span>
+        <span class="hotel-tag">수영장</span>
+        <span class="hotel-tag">가성비</span>
+      </div>
+      <div class="hotel-desc">
+        아트데코 스타일 중급 호텔. 방 크고 깨끗하며 위치 최고.
+        타패게이트 바로 옆이라 야시장·올드시티 접근성 좋음.
+        가격 대비 만족도 높은 곳. 예산 아끼고 마사지에 더 쓰고 싶으면.
+      </div>
+      <div class="hotel-price">1박 약 5~8만 원</div>
+      <a class="hotel-link" href="https://www.agoda.com/ko-kr/de-chai-the-deco-hotel/hotel/chiang-mai-th.html" target="_blank">아고다에서 보기 →</a>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon schedule">📋</div>
+      <div class="section-title">일정</div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <div class="day-header">
+        <div>
+          <div class="day-num">DAY 1</div>
+          <div class="day-theme">도착 + 느긋하게</div>
+        </div>
+        <div class="day-date">7/6 (월)</div>
+      </div>
+      <div class="day-body">
+        <div class="time-block">
+          <div class="time-label">오전</div>
+          <div class="time-content">인천 출발. 직항 기준 오전~낮 출발편 다수.</div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">오후</div>
+          <div class="time-content">치앙마이 도착. <strong>그랩</strong> 타고 숙소 이동 (공항에서 올드시티 15분, 약 3,000원). 체크인 후 짐 풀고 숙소 주변 산책.</div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">저녁</div>
+          <div class="time-content">
+            <strong>카오소이</strong> 한 그릇으로 첫 끼. 카오소이 매수리 or 카오소이 쿤야이 추천.<br>
+            식후 <strong>타이마사지 1시간</strong> (300~400바트 ≒ 약 12,000원). 피곤하면 일찍 자기.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+      <div class="day-header">
+        <div>
+          <div class="day-num">DAY 2</div>
+          <div class="day-theme">절 + 카페 + 마사지</div>
+        </div>
+        <div class="day-date">7/7 (화)</div>
+      </div>
+      <div class="day-body">
+        <div class="time-block">
+          <div class="time-label">오전</div>
+          <div class="time-content">
+            <strong>왓프라싱 → 왓체디루앙</strong> 도보 투어. 올드시티 안이라 전부 걸어서. 아침 일찍 가면 사람 거의 없음. 절 안에서 앉아 멍 때려도 아무도 신경 안 씀.
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">점심</div>
+          <div class="time-content">올드시티 카페에서 브런치. <strong>Fern Forest Cafe</strong> (식물 가득 감성), <strong>Rustic & Blue</strong> (조용하고 음식 좋음).</div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">오후</div>
+          <div class="time-content">
+            <strong>님만해민 로드</strong>로 이동 (그랩 5분). 카페 호핑 — <strong>Graph</strong> (미니멀 감성), <strong>Ristr8to</strong> (라떼아트 챔피언). 마야몰 구경도 가능.
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">저녁</div>
+          <div class="time-content">
+            님만해민 로컬 식당에서 저녁.<br>
+            <strong>아로마 오일 마사지 + 발 마사지 2시간</strong> (500~600바트 ≒ 약 22,000원).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <div class="day-header">
+        <div>
+          <div class="day-num">DAY 3</div>
+          <div class="day-theme">숲 속 사원 + 여유</div>
+        </div>
+        <div class="day-date">7/8 (수)</div>
+      </div>
+      <div class="day-body">
+        <div class="time-block">
+          <div class="time-label">오전</div>
+          <div class="time-content">
+            <strong>왓우몽</strong> (Wat Umong). 숲속 터널 사원. 올드시티에서 그랩 15분. 관광객 적고, 나무 그늘 아래 명상하는 사람들 사이에서 혼자 걷기 좋음. 시원하고 조용함.
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">점심</div>
+          <div class="time-content">왓우몽 근처 로컬 식당 or 숙소 복귀 후 카페.</div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">오후</div>
+          <div class="time-content">
+            <strong>선택 A) 완전 쉬기</strong> — 숙소 수영장 + 낮잠 + 카페에서 멍<br>
+            <strong>선택 B) 도이수텝</strong> — 산 위 사원 (그랩 30분). 치앙마이 시내 전체가 내려다보이는 전망. 계단 300개 있으니 컨디션 보고 결정.
+          </div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">저녁</div>
+          <div class="time-content">
+            <strong>창끌란 나이트바자</strong> (매일 열림) 구경하며 먹거리 사기. 또는 숙소에서 배달 (그랩푸드 가능).<br>
+            마지막 밤 <strong>허브볼 마사지</strong> 추천. 근육 풀리는 게 다름.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card">
+      <div class="day-header">
+        <div>
+          <div class="day-num">DAY 4</div>
+          <div class="day-theme">출발</div>
+        </div>
+        <div class="day-date">7/9 (목)</div>
+      </div>
+      <div class="day-body">
+        <div class="time-block">
+          <div class="time-label">오전</div>
+          <div class="time-content">느지막이 일어나서 조식. 체크아웃. 짐 프론트에 맡기고 올드시티 마지막 산책.</div>
+        </div>
+        <div class="time-block">
+          <div class="time-label">오후</div>
+          <div class="time-content">
+            공항 이동 (그랩 15분). 귀국편 탑승. 공항 작아서 1시간 전 도착이면 충분.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon money">💰</div>
+      <div class="section-title">예상 비용</div>
+    </div>
+
+    <div class="card">
+      <table class="cost-table">
+        <tr>
+          <td>항공 왕복 (LCC 직항)</td>
+          <td>40~55만</td>
+        </tr>
+        <tr>
+          <td>숙소 3박 (부티크 호텔 기준)</td>
+          <td>25~35만</td>
+        </tr>
+        <tr>
+          <td>마사지 3~4회</td>
+          <td>5~7만</td>
+        </tr>
+        <tr>
+          <td>식비 (하루 3끼 × 4일)</td>
+          <td>8~12만</td>
+        </tr>
+        <tr>
+          <td>교통 (그랩)</td>
+          <td>2~3만</td>
+        </tr>
+        <tr>
+          <td>입장료·기타</td>
+          <td>1~2만</td>
+        </tr>
+        <tr class="cost-total">
+          <td>총 예상</td>
+          <td>약 80~110만</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon check">✓</div>
+      <div class="section-title">예약 체크리스트</div>
+    </div>
+
+    <div class="card">
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div><strong>항공권 예약</strong> — 스카이스캐너/카약에서 7/6 출발 7/9 귀국 직항 검색 → 최저가 결제. <em>이번 주 안에 끊기.</em></div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div><strong>숙소 예약</strong> — Agoda 또는 Booking.com에서 위 추천 숙소 중 택1. 무료 취소 가능 옵션으로 예약.</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div><strong>여권 확인</strong> — 유효기간 6개월 이상 남아있는지 체크. 태국 무비자 90일이라 비자 불필요.</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div><strong>그랩 앱 설치</strong> — 태국 택시 = 그랩. 한국에서 미리 설치하고 결제수단 등록.</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div><strong>환전</strong> — 한국에서 바트 환전이 더 유리. 20~30만 원어치면 충분. 카드 결제도 대부분 가능.</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div><strong>유심 or eSIM</strong> — 쿠팡에서 태국 eSIM 미리 구매 (4일 무제한 약 5,000~8,000원). 또는 공항 도착 후 AIS 유심 구매.</div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div><strong>짐 싸기</strong> — 우기라 우산/우비 필수. 얇은 긴팔 1벌 (에어컨 강한 곳 많음). 절 방문용 어깨 덮는 옷. 수영복. 슬리퍼.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">
+    수현아, <em>경금은 물에서 식혀야 다시 날이 선다.</em><br>
+    바람 쐬고 와.
+  </div>
+
+</div>
+
+</body>
+</html>
